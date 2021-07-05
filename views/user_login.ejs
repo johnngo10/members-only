@@ -1,0 +1,19 @@
+<%- include('partials/head')%>
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            <fieldset>
+                <label for="username">
+                    Username
+                    <input type="text" name="username" required>
+                </label>
+                <label for="password">
+                    Password
+                    <input type="password" name="password" required>
+                </label>
+            </fieldset>
+            <fieldset>
+                <input type="submit" value="Sign In">
+            </fieldset>
+        </form>
+    </body>
+</html>
