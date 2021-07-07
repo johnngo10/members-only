@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
+const LocalStrategy = require("passport-local");
 
 passport.use(
   new LocalStrategy((username, password, done) => {
@@ -15,9 +15,11 @@ passport.use(
       bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
           // passwords match! log user in
+          console.log("1");
           return done(null, user);
         } else {
           // passwords do not match!
+          console.log(user);
           return done(null, false, { message: "Incorrect password" });
         }
       });
@@ -43,25 +45,34 @@ exports.user_create_get = (req, res) => {
 // Handle creating new user on POST
 exports.user_create_post = (req, res) => {
   const { username, password, confirmPassword } = req.body;
+
   if (!username || !password) {
     res.send("missing required fields");
   } else {
-    const user = new User({
-      username,
-      password,
-    });
-
-    bcrypt.hash(password, 10, (err, hashedPassword) => {
-      if (err) {
-        return next(err);
+    // Check for duplicate username
+    User.findOne({ username: username }).then((user) => {
+      if (user) {
+        // Throw a 400 error if username already exists
+        return res.status(400).json({
+          username: "A user has already registered with this username",
+        });
       } else {
-        user.password = hashedPassword;
-        user
-          .save()
-          .then(() => {
-            res.redirect("/");
-          })
-          .catch((err) => console.log(err));
+        // Otherwise create new user
+        bcrypt.hash(password, 10, (err, hashedPassword) => {
+          if (err) {
+            return next(err);
+          } else {
+            const user = new User({
+              username,
+              password: hashedPassword,
+            })
+              .save()
+              .then(() => {
+                res.redirect("/");
+              })
+              .catch((err) => console.log(err));
+          }
+        });
       }
     });
   }
@@ -75,7 +86,7 @@ exports.user_login_get = (req, res) => {
 // Handle logging in user on POST
 exports.user_login_post = passport.authenticate("local", {
   successRedirect: "/",
-  failureRedirect: "/",
+  failureRedirect: "/login",
 });
 
 // Handle logging out user on GET

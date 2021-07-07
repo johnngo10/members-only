@@ -6,6 +6,7 @@ const user_controller = require("../controllers/userController");
 const message_controller = require("../controllers/messageController");
 
 router.get("/", (req, res) => {
+  console.log(req.user);
   res.render("index", { user: req.user });
 });
 
