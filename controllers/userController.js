@@ -15,11 +15,9 @@ passport.use(
       bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
           // passwords match! log user in
-          console.log("1");
           return done(null, user);
         } else {
           // passwords do not match!
-          console.log(user);
           return done(null, false, { message: "Incorrect password" });
         }
       });
@@ -39,7 +37,7 @@ passport.deserializeUser(function (id, done) {
 
 // Display sign up form for creating new user
 exports.user_create_get = (req, res) => {
-  res.render("user_form", { user: req.user });
+  res.render("user_form");
 };
 
 // Handle creating new user on POST
@@ -80,7 +78,7 @@ exports.user_create_post = (req, res) => {
 
 // Display log in form
 exports.user_login_get = (req, res) => {
-  res.render("user_login", { user: req.user });
+  res.render("user_login");
 };
 
 // Handle logging in user on POST

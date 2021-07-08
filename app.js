@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// Middleware for giving all views access to the currentUser variable
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
   next();

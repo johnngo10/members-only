@@ -1,0 +1,19 @@
+<%- include('partials/head')%>
+        <h1>New Message</h1>
+        <form action="/new-message" method="POST">
+            <fieldset>
+                <label for="title">
+                    Title
+                    <input type="text" name="title" required>
+                </label>
+                <label for="message">
+                    Message
+                    <textarea name="message" id=""></textarea>
+                </label>
+            </fieldset>
+            <fieldset>
+                <input type="submit" value="Sign Up">
+            </fieldset>
+        </form>
+    </body>
+</html>

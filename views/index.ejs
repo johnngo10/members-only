@@ -1,4 +1,17 @@
-<%- include('partials/head', {user: user})%>
-        <h1>Index Page</h1>
+<%- include('partials/head')%>
+        <div>
+            <ul>
+                <% messages.map((value) => { %>
+                    <li>
+                        <p><%= value.title %></p>
+                        <p><%= value.message %></p>
+                        <div>
+                            <p><%= value.date %></p>
+                            <p><%= value.user.username %></p>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
     </body>
 </html>

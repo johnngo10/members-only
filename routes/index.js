@@ -5,10 +5,8 @@ const router = express.Router();
 const user_controller = require("../controllers/userController");
 const message_controller = require("../controllers/messageController");
 
-router.get("/", (req, res) => {
-  console.log(req.user);
-  res.render("index", { user: req.user });
-});
+// Index Route
+router.get("/", message_controller.messages_display_get);
 
 /// USER  ROUTES ///
 
@@ -26,5 +24,13 @@ router.post("/login", user_controller.user_login_post);
 
 // GET request for logging out user
 router.get("/logout", user_controller.user_logout_get);
+
+/// MESSAGE ROUTES ///
+
+// GET request for new message form
+router.get("/new-message", message_controller.message_create_get);
+
+// POST request for new message form
+router.post("/new-message", message_controller.message_create_post);
 
 module.exports = router;

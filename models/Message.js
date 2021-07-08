@@ -6,7 +6,7 @@ const messageSchema = new Schema({
     type: String,
     required: true,
   },
-  text: {
+  message: {
     type: String,
     required: true,
   },
@@ -19,3 +19,6 @@ const messageSchema = new Schema({
     default: Date.now,
   },
 });
+
+const Message = mongoose.model("Message", messageSchema);
+module.exports = Message;

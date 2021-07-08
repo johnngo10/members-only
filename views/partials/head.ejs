@@ -11,13 +11,13 @@
     <header>
       <h1>Members Only</h1>
       <nav>
-        <% if (user) { %>
-        <p>Welcome <%= user.username %></p>
+        <% if (currentUser) { %>
+        <p>Welcome <%= currentUser.username %></p>
         <a href="/logout">Log Out</a>
+        <a href="/new-message">New Message</a>
         <% } else { %>
         <a href="/login">Log In</a>
         <a href="/sign-up">Sign Up</a>
-        <a href="/logout">Log Out</a>
         <% } %>
       </nav>
     </header>
