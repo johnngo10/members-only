@@ -1,13 +1,14 @@
 <%- include('partials/head')%>
         <div>
-            <ul>
+            <ul class="message-container">
                 <% messages.map((value) => { %>
-                    <li>
-                        <p><%= value.title %></p>
-                        <p><%= value.message %></p>
-                        <div>
-                            <p><%= value.date %></p>
+                    <li class="messages">
+                        <p class="message-title"><%= value.title %></p>
+                        <p class="message-text"><%= value.message %></p>
+                        <div class="messages-info">
+                            <p><%= value.date.toDateString() %></p>
                             <p><%= value.user.username %></p>
+                            <i class="fas fa-trash"></i>
                         </div>
                     </li>
                 <% }) %>

@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const session = require("express-session");
 const passport = require("passport");
+const flash = require('connect-flash');
 const connectDB = require("./config/db");
 require("dotenv").config();
 const indexRouter = require("./routes/index");
@@ -14,6 +15,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(flash());
 app.use(express.static(path.join(__dirname, "public")));
 
 // Middleware for giving all views access to the currentUser variable

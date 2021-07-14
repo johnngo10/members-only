@@ -10,7 +10,7 @@ passport.use(
         return done(err);
       }
       if (!user) {
-        return done(null, false, { message: "Incorrect username" });
+        return done(null, false, { message: "Invalid username or password." });
       }
       bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
@@ -18,7 +18,9 @@ passport.use(
           return done(null, user);
         } else {
           // passwords do not match!
-          return done(null, false, { message: "Incorrect password" });
+          return done(null, false, {
+            message: "Invalid username or password.",
+          });
         }
       });
     });
@@ -37,7 +39,10 @@ passport.deserializeUser(function (id, done) {
 
 // Display sign up form for creating new user
 exports.user_create_get = (req, res) => {
-  res.render("user_form");
+  res.render("user_form", {
+    usernameError: req.flash("usernameError"),
+    passwordError: req.flash("passwordError"),
+  });
 };
 
 // Handle creating new user on POST
@@ -50,10 +55,16 @@ exports.user_create_post = (req, res) => {
     // Check for duplicate username
     User.findOne({ username: username }).then((user) => {
       if (user) {
-        // Throw a 400 error if username already exists
-        return res.status(400).json({
-          username: "A user has already registered with this username",
-        });
+        // Throw an error if username already exists
+        req.flash(
+          "usernameError",
+          "A user has already registered with this username."
+        );
+        res.redirect("/sign-up");
+      } else if (password !== confirmPassword) {
+        // Flash an error if password does not match confirm password
+        req.flash("passwordError", "Password does not match.");
+        res.redirect("/sign-up");
       } else {
         // Otherwise create new user
         bcrypt.hash(password, 10, (err, hashedPassword) => {
@@ -78,12 +89,14 @@ exports.user_create_post = (req, res) => {
 
 // Display log in form
 exports.user_login_get = (req, res) => {
-  res.render("user_login");
+  // Figure out how to properly use failureFlash
+  res.render("user_login", { message: req.flash("error") });
 };
 
 // Handle logging in user on POST
 exports.user_login_post = passport.authenticate("local", {
   successRedirect: "/",
+  failureFlash: true,
   failureRedirect: "/login",
 });
 

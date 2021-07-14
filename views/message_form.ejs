@@ -1,18 +1,19 @@
 <%- include('partials/head')%>
-        <h1>New Message</h1>
         <form action="/new-message" method="POST">
-            <fieldset>
+            <h2>New Message</h2>
+            <fieldset class="info-fields">
                 <label for="title">
                     Title
                     <input type="text" name="title" required>
                 </label>
                 <label for="message">
                     Message
-                    <textarea name="message" id=""></textarea>
+                    <textarea name="message"></textarea>
                 </label>
             </fieldset>
             <fieldset>
-                <input type="submit" value="Sign Up">
+                <input type="submit" value="Sign Up" class="submit-button">
+                <a href="/" class="cancel-button">Cancel</a>
             </fieldset>
         </form>
     </body>

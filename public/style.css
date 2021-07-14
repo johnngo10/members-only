@@ -1,0 +1,122 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.main-logo {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+/* Nav */
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a,
+nav p {
+  margin-left: 20px;
+}
+
+/* Index Page */
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+}
+
+.messages {
+  border: 1px solid black;
+  width: 500px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.message-title {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.message-text {
+  margin-bottom: 20px;
+}
+
+.messages-info {
+  text-align: right;
+}
+
+/* Login Form */
+
+form {
+  width: 500px;
+  margin: 60px auto;
+}
+
+form h2 {
+  text-align: center;
+}
+
+.info-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-fields label {
+  margin: 10px 0;
+}
+
+.info-fields input {
+  width: 100%;
+  font-size: 16px;
+  padding: 5px;
+  margin: 10px 0;
+}
+
+.info-fields textarea {
+  resize: none;
+  width: 100%;
+  height: 100px;
+  font-size: 16px;
+  padding: 10px;
+}
+
+form fieldset {
+  border: none;
+  margin: 20px 0;
+}
+
+.submit-button {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cancel-button {
+  border: 1px solid black;
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+}
+
+/* Errors */
+
+.error-messages {
+  color: red;
+}
