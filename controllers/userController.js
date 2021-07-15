@@ -89,7 +89,6 @@ exports.user_create_post = (req, res) => {
 
 // Display log in form
 exports.user_login_get = (req, res) => {
-  // Figure out how to properly use failureFlash
   res.render("user_login", { message: req.flash("error") });
 };
 

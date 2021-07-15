@@ -33,4 +33,7 @@ router.get("/new-message", message_controller.message_create_get);
 // POST request for new message form
 router.post("/new-message", message_controller.message_create_post);
 
+// POST request for deleting message
+router.post("/:id", message_controller.message_delete_post);
+
 module.exports = router;

@@ -1,5 +1,5 @@
 <%- include('partials/head')%>
-        <form action="/new-message" method="POST">
+        <form action="/new-message" method="POST" class="forms">
             <h2>New Message</h2>
             <fieldset class="info-fields">
                 <label for="title">
@@ -8,7 +8,7 @@
                 </label>
                 <label for="message">
                     Message
-                    <textarea name="message"></textarea>
+                    <textarea name="message" required></textarea>
                 </label>
             </fieldset>
             <fieldset>

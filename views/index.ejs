@@ -6,9 +6,19 @@
                         <p class="message-title"><%= value.title %></p>
                         <p class="message-text"><%= value.message %></p>
                         <div class="messages-info">
-                            <p><%= value.date.toDateString() %></p>
-                            <p><%= value.user.username %></p>
-                            <i class="fas fa-trash"></i>
+                            <div>
+                                <% if (id === value.user.id) { %>
+                                    <form action="/<%=value.id%>" method="POST">
+                                        <button class="delete-button">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                <% } %>
+                            </div>
+                            <div>
+                                <p><%= value.date.toDateString() %></p>
+                                <p><%= value.user.username %></p>
+                            </div>
                         </div>
                     </li>
                 <% }) %>

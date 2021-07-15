@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 
 header {
@@ -53,20 +54,30 @@ nav p {
 
 .message-text {
   margin-bottom: 20px;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .messages-info {
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-button {
+  cursor: pointer;
+  border: none;
 }
 
 /* Login Form */
 
-form {
+.forms {
   width: 500px;
   margin: 60px auto;
 }
 
-form h2 {
+.forms h2 {
   text-align: center;
 }
 
@@ -92,9 +103,10 @@ form h2 {
   height: 100px;
   font-size: 16px;
   padding: 10px;
+  margin: 10px 0;
 }
 
-form fieldset {
+.forms fieldset {
   border: none;
   margin: 20px 0;
 }
