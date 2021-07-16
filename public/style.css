@@ -10,13 +10,18 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  background-color: #407294;
 }
 
 .main-logo {
   text-decoration: none;
-  color: black;
+  color: #ffffff;
   cursor: pointer;
+}
+
+body {
+  background-color: #f5f5f5;
 }
 
 /* Nav */
@@ -29,6 +34,8 @@ nav {
 nav a,
 nav p {
   margin-left: 20px;
+  text-decoration: none;
+  color: #ffffff;
 }
 
 /* Index Page */
@@ -41,10 +48,13 @@ nav p {
 }
 
 .messages {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 500px;
   margin: 20px;
   padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 15px 30px rgb(0 0 0 / 15%);
+  color: #333333;
 }
 
 .message-title {
@@ -70,11 +80,29 @@ nav p {
   border: none;
 }
 
+.message-user {
+  display: flex;
+  align-items: center;
+  text-align: right;
+}
+
+.message-user div {
+  text-align: right;
+}
+
+.message-user-icon {
+  margin-right: 5px;
+  font-size: 12px;
+}
+
 /* Login Form */
 
 .forms {
   width: 500px;
   margin: 60px auto;
+  background-color: #ffffff;
+  box-shadow: 0px 15px 30px rgb(0 0 0 / 15%);
+  padding: 40px;
 }
 
 .forms h2 {

@@ -43,7 +43,6 @@ exports.message_create_post = async (req, res) => {
 
 // Handle deleting message on POST
 exports.message_delete_post = (req, res) => {
-  // const { id } = req.user;
   const { id } = req.params;
   Message.findByIdAndDelete(id, (err, data) => {
     if (err) {

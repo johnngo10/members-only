@@ -15,9 +15,11 @@
                                     </form>
                                 <% } %>
                             </div>
-                            <div>
+                            <div class="d">
                                 <p><%= value.date.toDateString() %></p>
-                                <p><%= value.user.username %></p>
+                                <p class="message-user">
+                                    <i class="fas fa-user message-user-icon"></i><%= value.user.username %>
+                                </p>
                             </div>
                         </div>
                     </li>
